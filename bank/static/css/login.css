@@ -1,0 +1,71 @@
+
+.log_container{
+    background-color:Seashell;
+    margin:10%;
+    padding:30px;
+}
+
+.fld{
+   padding:5px;
+   width: 30%;
+   margin:10px;
+}
+
+.data{
+   padding:15px;
+   width: 30%;
+   margin:10px;
+   align:left;
+}
+.data1{
+   padding:15px;
+   width: 30%;
+   margin:10px;
+   align:right;
+}
+
+.fld1{
+   padding:5px;
+   width: 100%;
+}
+.btn1{
+   padding:5px;
+   width: 40%;
+   margin:10px;
+   background-color:green;
+   color:white;
+   border:None;
+}
+.btn2{
+    background-color:red;
+    padding-left:18%;
+    padding-right: 18%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    align:center;
+    color:white;
+}
+a { color: inherit; }
+
+.btn3{
+    background-color:SandyBrown;
+    padding-left:18%;
+    padding-right: 18%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    align:center;
+    color:white;
+}
+.home_login{
+    margin-left:45%;
+    padding-top: 5%;
+}
+.btn4{
+    background-color:green;
+    padding-left:5%;
+    padding-right: 5%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    align:center;
+    color:white;
+}

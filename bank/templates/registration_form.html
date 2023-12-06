@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var subjectObject = {
+              "Thiruvananthapuram": [
+                "Palayam", "Attingal", "Varkala","Kazhakkoottam"
+              ],
+              "Ernakulam": [
+                "Aluva", "Edapally","Angamaly"
+              ],
+              "Alappuzha": [
+                "Cherthala", "Kayamkulam","Chegannur"
+              ],
+              "Thrissur": [
+                "Irinjalakuda", "Guruvayur","Chalakudy"
+              ],
+              "Kozhikode": [
+                "Kappad", "Thamarassery","Ramanattukara"
+              ]
+            }
+            window.onload = function() {
+              var subjectSel = document.getElementById("district");
+              var topicSel = document.getElementById("branch");
+              for (var x in subjectObject) {
+                subjectSel.options[subjectSel.options.length] = new Option(x, x);
+              }
+              subjectSel.onchange = function() {
+             //empty Chapters- and Topics- dropdowns
+             topicSel.length = 1;
+                //display correct values
+                z = subjectObject[this.value]
+                for (var i = 0; i < z.length; i++){
+                  topicSel.options[topicSel.options.length] = new Option(z[i], z[i]);
+                }
+              }
+
+            }
+
+        </script>
+
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    </head>
+    <body>
+
+      <div class="log_container" align="center">
+            <h1><u>APPLICATION FORM</u></h1>
+            <form action="" method="post" id="myForm">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td class="data">
+                            <label for="name"> NAME </label>
+                        </td>
+                        <td class="data1">
+                            <input class="fld1" type="text" name="name" placeholder="Enter the Name"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="dob"> DATE OF BIRTH </label>
+                        </td>
+                        <td class="data1">
+                            <input class="fld1" type="date" name="dob" placeholder="Enter the Date of Birth"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="age"> AGE </label>
+                        </td>
+                        <td class="data1">
+                            <input class="fld1" type="text" name="age" placeholder="Enter the Age"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="gender"> GENDER </label>
+                        </td>
+                        <td class="data1">
+                            <input  type="radio" name="gender" value="male">
+                            <label for="male">Male</label><br>
+                            <input  type="radio" name="gender" value="female">
+                            <label for="female">Female</label><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="ph"> PHONE NUMBER </label>
+                        </td>
+                        <td class="data1">
+                            <input class="fld1" type="text" name="phone" placeholder="Enter the Phone No"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="email"> EMAIL ID </label>
+                        </td>
+                        <td class="data1">
+                            <input class="fld1" type="email" name="email" placeholder="Enter the Email ID"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="address"> ADDRESS </label>
+                        </td>
+                        <td class="data1">
+                            <input class="fld1" type="text" name="address" placeholder="Enter the Address"><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="district"> DISTRICT </label>
+                        </td>
+                        <td class="data1">
+                            <select class="fld1" name="district" id="district">
+                                <option value="" selected="selected">Select District</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="branch"> BRANCH </label>
+                        </td>
+                        <td class="data1">
+                            <select class="fld1" name="branch" id="branch">
+                                <option value="" selected="selected">Please select Branch</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="ac"> ACCOUNT TYPE </label>
+                        </td>
+                        <td class="data1">
+                            <select class="fld1" name="ac">
+                                <option value="savings account">Savings Account</option>
+                                <option value="current account">Current Account</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">
+                            <label for="mtl"> MATERIALS PROVIDE </label>
+                        </td>
+                        <td class="data1">
+                            <input type="checkbox" id="debit_card" name="debit_card" value="True">
+                            <label for="debit_card">Debit card</label><br>
+                            <input type="checkbox" id="credit_card" name="credit_card" value="True">
+                            <label for="credit_card">Credit card</label><br>
+                            <input type="checkbox" id="cheque_book" name="cheque_book" value="True">
+                            <label for="cheque_book">Cheque book</label><br>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <input class="btn1" id="check" type="Submit"><br>
+                <a class="btn2" href="{% url 'logout' %}"><small>Logout</small></a>
+            </form>
+            <br>
+            {% for msg in messages %}
+            {{msg}}
+            {% endfor %}
+            <br>
+            <br>
+            <a class="btn3" href="{% url 'home' %}"><small>HOME</small></a>
+      </div>
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.js' %}"></script>
+    <script type="text/javascript">
+        $('#myForm').validate({
+            rules:{
+                username: {
+                    required: true,
+                    minlength:1
+                },
+                name: {
+                    required: true,
+                    minlength:2
+                },
+                dob: {
+                    required: true
+                },
+                age: {
+                    required: true
+                },
+                gender: {
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+                email: {
+                    required: true
+                },
+                address: {
+                    required: true
+                },
+                district: {
+                    required: true
+                },
+                branch: {
+                    required: true
+                },
+                ac: {
+                    required: true
+                }
+            }
+        })
+    </script>
+    </body>
+</html>
+
+
+
+

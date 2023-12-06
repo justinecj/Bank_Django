@@ -1,0 +1,161 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
+
+
+
+
+<div class="log_container" align="center">
+      <table>
+            <tr>
+                  <td style="padding:5px; width: 30%; margin:10px; align:left;">
+                        <a href="{% url 'registration_form' %}" style="color:white; background-color:green; padding:10px;">ADD YOUR DETAILS</a>
+                  </td>
+                  <td style="padding:5px; width: 30%; margin:10px; align:right;">
+                        <a href="{% url 'home' %}" style="color:white; background-color:green; padding:10px;" >GO TO HOME</a>
+                  </td>
+            </tr>
+      </table>
+</div>
+
+
+{% for i in data %}
+
+<div class="log_container" align="center">
+<table align="center">
+      <h3 align="center">DETAILS</h3>
+  <tr>
+      <td class="data">
+          <label for="name"> NAME </label>
+      </td>
+      <td class="data1">
+          <p>{{i.name}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="dob"> DATE OF BIRTH </label>
+      </td>
+      <td class="data1">
+          <p>{{i.dob}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="age"> AGE </label>
+      </td>
+      <td class="data1">
+          <p>{{i.age}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="gender"> GENDER </label>
+      </td>
+      <td class="data1">
+          <p>{{i.gender}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="ph"> PHONE NUMBER </label>
+      </td>
+      <td class="data1">
+          <p>{{i.phone}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="email"> EMAIL ID </label>
+      </td>
+      <td class="data1">
+          <p>{{i.email}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="address"> ADDRESS </label>
+      </td>
+      <td class="data1">
+          <p>{{i.address}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="district"> DISTRICT </label>
+      </td>
+      <td class="data1">
+          <p>{{i.district}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="branch"> BRANCH </label>
+      </td>
+      <td class="data1">
+          <p>{{i.branch}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="ac"> ACCOUNT TYPE </label>
+      </td>
+      <td class="data1">
+          <p>{{i.account}}</p>
+      </td>
+  </tr>
+  <tr>
+      <td class="data">
+          <label for="mtl"> MATERIALS PROVIDE </label>
+      </td>
+      <td class="data1">
+            <table>
+                  <tr>
+                        <td class="data">
+                              <label for="debit_card">Debit card</label>
+                        </td>
+                        <td class="data1">
+                              {% if i.debit_card == True %}
+                              <p>YES</p>
+                              {% else %}
+                              <p>NO</p>
+                              {% endif %}
+                        </td>
+                  </tr>
+                  <tr>
+                        <td class="data">
+                              <label for="credit_card">Credit card</label>
+                        </td>
+                        <td class="data1">
+                              {% if i.credit_card == True %}
+                              <p>YES</p>
+                              {% else %}
+                              <p>NO</p>
+                              {% endif %}
+                        </td>
+                  </tr>
+                  <tr>
+                        <td class="data">
+                              <label for="cheque_book">Cheque book</label><br>
+                        </td>
+                        <td class="data1">
+                              {% if i.cheque_book == True %}
+                              <p>YES</p>
+                              {% else %}
+                              <p>NO</p>
+                              {% endif %}
+                        </td>
+                  </tr>
+            </table>
+
+      </td>
+  </tr>
+</table>
+
+</div>
+{% endfor %}
+
+
+
+{% endblock %}
