@@ -42,8 +42,8 @@ def registration_form(request):
 
             data = UserDetails (user_name=u_name, name=name, dob=dob, age=age, gender=gender, phone=phone, email=email, address=address, district=district, branch=branch, account=ac, debit_card=debit_card, credit_card=credit_card, cheque_book=cheque_book)
             data.save()
-            messages.info(request, "application accepted")
-            return redirect('registration_form')
+            messages.info(request, "application accepted successfully")
+            return redirect('go_to_registration_form')
 
     return render(request, 'registration_form.html')
 def login(request):
